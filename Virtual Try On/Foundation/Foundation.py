@@ -147,6 +147,7 @@ def checkForSkin(IMG10):
     # closedH3 = cv2.cvtColor(closedH3, cv2.COLOR_BGR2RGB)
     return closedH3
 
+
 fileface = np.loadtxt('pointface.txt')
 pointsface =  np.floor(fileface)
 point_face_x = np.array((pointsface[:][:,0]))
