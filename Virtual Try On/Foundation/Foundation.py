@@ -148,19 +148,21 @@ def checkForSkin(IMG10):
     return closedH3
 
 
-fileface = np.loadtxt('pointface.txt')
+fileface = np.loadtxt('Virtual Try On/Foundation/pointface.txt')
 pointsface =  np.floor(fileface)
 point_face_x = np.array((pointsface[:][:,0]))
 point_face_y = np.array(pointsface[:][:,1])
 
-file = np.loadtxt('pointlips.txt')
+file = np.loadtxt('Virtual Try On/Foundation/pointlips.txt')
 points =  np.floor(file)
-point_out_x = np.array((points[:len(points)/2][:,0]))
-point_out_y = np.array(points[:len(points)/2][:,1])
-point_in_x = (points[len(points)/2:][:,0])
-point_in_y = points[len(points)/2:][:,1]
+mid_index = len(points) // 2
+point_out_x = np.array((points[:mid_index][:,0]))
+point_out_y = np.array(points[:mid_index][:,1])
+point_in_x = points[mid_index:][:,0]
+point_in_y = points[mid_index:][:,1]
 
-fileeye = np.loadtxt('pointeyes.txt')
+
+fileeye = np.loadtxt('Virtual Try On/Foundation/pointeyes.txt')
 pointseye =  np.floor(fileeye)
 eye_point_down_x = np.array((pointseye[:eye_lower_left_end][:,0]))
 eye_point_down_y = np.array(pointseye[:eye_lower_left_end][:,1])
@@ -171,7 +173,7 @@ eye_point_down_y_right = np.array(pointseye[eye_upper_left_end:eye_lower_right_e
 eye_point_up_x_right = np.array((pointseye[eye_lower_right_end:eye_upper_right_end][:,0]))
 eye_point_up_y_right = np.array(pointseye[eye_lower_right_end:eye_upper_right_end][:,1])
 
-im = imread('Input.jpg')
+im = imread('Virtual Try On/Foundation/Input.jpg')
 im2 = im.copy()
 height, width = im.shape[:2]
 
@@ -236,7 +238,17 @@ righteyex, righteyey = getInteriorPoints(e_l_r[0].tolist() + e_u_r[0].tolist(), 
 x_aux.extend(righteyex)
 y_aux.extend(righteyey)
 
-temp = im[x_aux, y_aux]
+# Ensure integer coordinates (assuming getInteriorPoints returns floats)
+x_aux_int = [int(val) for val in x_aux]
+y_aux_int = [int(val) for val in y_aux]
+
+# Clip coordinates to image boundaries
+x_aux_int = np.clip(x_aux_int, 0, im.shape[1] - 1)
+y_aux_int = np.clip(y_aux_int, 0, im.shape[0] - 1)
+
+# Access image data with integer coordinates
+temp = im[y_aux_int, x_aux_int]
+
 
 val = color.rgb2lab((im[x,y]/255.).reshape(len(x),1,3)).reshape(len(x),3)
 vallips = color.rgb2lab((im[x_aux,y_aux]/255.).reshape(len(x_aux),1,3)).reshape(len(x_aux),3)
