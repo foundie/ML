@@ -10,7 +10,8 @@ def hex_to_rgb(hex_color):
     return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
 
 # Membaca data dari CSV
-df = pd.read_csv("final_product_classifier.csv")
+#df = pd.read_csv("final_product_classifier.csv")
+df = pd.read_excel('powder_foundation_cussion_tone_classifier.xlsx')
 df['Color RGB'] = df['Color HEX'].apply(hex_to_rgb)
 
 # One-Hot Encoding untuk fitur kategori
@@ -45,6 +46,7 @@ def recommend_products(input_product, df, normalized_features, kmeans, encoder, 
     
     recommendations = cluster_products.iloc[closest_indices].copy()
     recommendations['Similarity'] = 100 - (distances[0][closest_indices] / distances[0][closest_indices].max() * 100)
+    recommendations = recommendations[recommendations['Product Title'] != input_product['Product Title']]
     
     return recommendations
 
@@ -56,11 +58,8 @@ search_results = search_products(product_title_input, df)
 
 if not search_results.empty:
     print("Produk ditemukan:")
-    print(search_results[['Product Title', 'Brand']])
+    print(search_results[['Product Title', 'Brand', 'Type', 'Season 1 Name', 'Tone', 'Color HEX']])
     
-    # Menampilkan hasil pencarian dengan indeks untuk memilih produk
-    for index, row in search_results.iterrows():
-        print(f"{index}: {row['Product Title']} - {row['Brand']}")
     
     # User memilih produk dari hasil pencarian
     selected_index = int(input("Pilih indeks produk yang ingin dibandingkan: "))
@@ -80,12 +79,13 @@ if not search_results.empty:
         }
         
         # Tentukan jumlah rekomendasi yang diinginkan
-        top_n = 4
+        top_n = 10
         
         # Cari rekomendasi
         recommended_products = recommend_products(input_product, df, normalized_features, kmeans, encoder, scaler, top_n)
         print("Rekomendasi Produk:")
-        print(recommended_products[['Product Title', 'Brand', 'Similarity']])
+        print(input_product['Product Title'], input_product['Type'], input_product['Brand'], input_product['Season 1 Name'], input_product['Color HEX'], input_product['Tone'])
+        print(recommended_products[['Product Title', 'Type', 'Brand','Season 1 Name', 'Color HEX', 'Tone','Similarity']])
     else:
         print("Indeks produk tidak valid.")
 else:
