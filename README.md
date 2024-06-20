@@ -105,7 +105,7 @@ The process carried out to obtain the dataset in order
     4. Classify Shade Products 
 
 ### Scraping Website Products 
-The scraping process begins by collecting resource links for each product page from several beuty product brands in Indonesia and one beuty product brand from outside Indonesia. The brands scraped include [wardah], [hanasui], [emina], [somethinc], [pixy], and [maybelline]. 
+The scraping process begins by collecting resource links for each product page from several beuty product brands in Indonesia and one beuty product brand from outside Indonesia. The brands scraped include [wardah](https://www.wardahbeauty.com/), [hanasui](https://hanasui.id/makeup/lipstick), [pixy](https://www.pixy.co.id/product/series), [somethinc](https://somethinc.com/id/product/detail/multitask-water-gloss), [emina](https://www.eminacosmetics.com/best-product), [meybelline](https://www.maybelline.com/).
 Then scraping is carried out using Python BeautifulSoup which can be seen at 
 
     Product_classifier/get_data 
