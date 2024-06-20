@@ -1,6 +1,5 @@
 # Machine Learning Repository
-
-This repository contains the creation of mathematical logic, machine learning models, and computational data processing with the following list of features:
+This repository contains the creation of mathematical logic, machine learning models, and computational data processing of the Foundie android application with the following list of features:
 
     1. Visual Weight Classifier 
     2. Skin Tone Classifier 
@@ -12,7 +11,7 @@ The model can classify faces into two categories low visual weight and high visu
 
 ![App Screenshot](https://i.ytimg.com/vi/gWCAVT0lH4g/maxresdefault.jpg)
 
-The dataset of this feature can be accessed at the link  [Google Drive](https://drive.google.com/file/d/1GhXA0SBQaRaoAbGLlv4Nk7KfxD0NY1tT/view?usp=sharing). The dataset has been preprocessed using OpenCV haarcascade_frontalface_default.xml and segmented using the face parsing model by removing unnecessary noise so that only the part of the face without hair remains. 
+The dataset of this feature can be accessed at the link  [Google Drive](https://drive.google.com/file/d/1GhXA0SBQaRaoAbGLlv4Nk7KfxD0NY1tT/view?usp=sharing). The dataset has been preprocessed using OpenCV haarcascade_frontalface_default.xml and segmented using the [face parsing](https://github.com/zllrunning/face-parsing.PyTorch) model by removing unnecessary noise so that only the part of the face without hair remains. 
 
 The model used uses CNN architecture with the following architectural details 
 
@@ -72,13 +71,16 @@ In color analysis using rules or rules that are reinforced using a recommender s
     Color Analysis/colorfixpol.ipynb
 
 ## 4. Product Comparison 
+The process of comparing and classifying products using unsupervised machine learning, namely K-Means by entering several features into K-Means, namely product color, product tone, product shade, and season name products. Determination of shade tone and season also uses the K-Means algorithm. This is done so that the results come out accurate and closer to the product that the user wants to compare. This feature selects one product option and then looks for 10 products that have similarities using Euclidian vector distance. 
+
 ![pict2](https://github.com/foundie/ML/blob/main/Product_classifier/classify_tone_product/Shade%20Pict/compare.png?raw=True)
+
 The process of the product comparison feature starts from several steps resulting in a final dataset that includes several variables and annotations. 
 
 | Column Name         | Description                                                                                  | Unique Values                                                                                   |
 |---------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
 | Product Title       | Product name obtained from scraping                                                          |                                                                                                 |
-| Brand               | Product brand obtained from scraping                                                         | wardah, hanasui, pixy, somethinc, emina, meybelline                                             |
+| Brand               | Product brand obtained from scraping                                                         | [wardah](https://www.wardahbeauty.com/), [hanasui](https://hanasui.id/makeup/lipstick), [pixy](https://www.pixy.co.id/product/series), [somethinc](https://somethinc.com/id/product/detail/multitask-water-gloss), [emina](https://www.eminacosmetics.com/best-product), [meybelline](https://www.maybelline.com/)                                             |
 | Type                | Product type categories                                                                      | lip, foundation & cushion, powder, face, eye, cheek                                             |
 | Variant Name        | Information about the product variant obtained from scraping                                 |                                                                                                 |
 | Color HEX           | Hexadecimal color code of the product obtained from scraping                                 |                                                                                                 |
@@ -145,4 +147,9 @@ The centroid distribution of the color of each cluster product is as follows
 ### Face Product
 ![pict2](https://github.com/foundie/ML/blob/main/Product_classifier/classify_tone_product/Shade%20Pict/face.png?raw=True)
 
+The result of the classification of these products is that when the user selects one product, ten other products will come out that are close to the product based on the parameters entered in K-means, namely color, type, shade, tone, and season features. 
+After processing using K-Means, the code is transposed into javascript to make it easier and faster to deploy on the server.
 
+## Feedback and Contribution
+This repository hosts the machine learning components developed for Foundie Application, as part of the Google Bangkit Academy Capstone Project. 
+We are open to constructive criticism, suggestions, and ideas for further development. Your feedback is valuable in shaping the future iterations of Foundie. Please feel free to contribute
