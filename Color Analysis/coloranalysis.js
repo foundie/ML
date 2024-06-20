@@ -55,7 +55,7 @@ function determineColorSeason(dominant, secondary, characteristics) {
     const colorSeason = {
         "dark,warm": "Autumn Deep",
         "dark,cool": "Winter Deep",
-        "light,warm": "Spring Light",
+        "light,warm": "Spring Light",   
         "light,cool": "Summer Light",
         "muted,warm": "Autumn Soft",
         "muted,cool": "Summer Soft",
@@ -96,7 +96,7 @@ function determineColorSeason(dominant, secondary, characteristics) {
         "Summer Cool": ["#E9738D", "#99AEAE", "#99888D", "#697A7E", "#646093", "#48457A", "#918C86", "#73606A", "#62BBC5", "#226C63", "#1F6680", "#16525A"],
         "Winter Cool": ["#F3D4DF", "#D2CFC4", "#BCD9C8", "#DA6CA1", "#AC5D98", "#642B60", "#4A5FA5", "#2A6A8B", "#009B8C", "#544275", "#4E3E3A", "#392C2B"]
     };
-
+    
     const seasonScores = {
         "Autumn Deep": 0,
         "Winter Deep": 0,
