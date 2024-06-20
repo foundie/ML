@@ -75,7 +75,8 @@ The process of comparing and classifying products using unsupervised machine lea
 
 ![pict2](https://github.com/foundie/ML/blob/main/Product_classifier/classify_tone_product/Shade%20Pict/compare.png?raw=True)
 
-The process of the product comparison feature starts from several steps resulting in a final dataset that includes several variables and annotations. This dataset accessible in this repository at     Product Comparison/Final Dataset.csv
+The process of the product comparison feature starts from several steps resulting in a final dataset that includes several variables and annotations. This dataset accessible in this repository at     
+    Product Comparison/Final Dataset.csv
 
 | Column Name         | Description                                                                                  | Unique Values                                                                                   |
 |---------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
