@@ -11,7 +11,7 @@ The model can classify faces into two categories low visual weight and high visu
 
 ![App Screenshot](https://i.ytimg.com/vi/gWCAVT0lH4g/maxresdefault.jpg)
 
-The dataset of this feature can be accessed at the link  [Google Drive](https://drive.google.com/file/d/1GhXA0SBQaRaoAbGLlv4Nk7KfxD0NY1tT/view?usp=sharing). The dataset has been preprocessed using OpenCV haarcascade_frontalface_default.xml and segmented using the [face parsing](https://github.com/zllrunning/face-parsing.PyTorch) model by removing unnecessary noise so that only the part of the face without hair remains. 
+The dataset of this feature can be accessed at the link  [Google Drive](https://drive.google.com/file/d/1GhXA0SBQaRaoAbGLlv4Nk7KfxD0NY1tT/view?usp=sharing). The dataset has been preprocessed using [OpenCV](https://github.com/opencv/opencv/blob/master/data/haarcascades_cuda/haarcascade_frontalface_default.xml) haarcascade_frontalface_default.xml and segmented using the [face parsing](https://github.com/zllrunning/face-parsing.PyTorch) model by removing unnecessary noise so that only the part of the face without hair remains. 
 
 The model used uses CNN architecture with the following architectural details 
 
@@ -105,7 +105,7 @@ The process carried out to obtain the dataset in order
     4. Classify Shade Products 
 
 ### Scraping Website Products 
-The scraping process begins by collecting resource links for each product page from several beuty product brands in Indonesia and one beuty product brand from outside Indonesia. The brands scraped include [wardah](https://www.wardahbeauty.com/), [hanasui](https://hanasui.id/makeup/lipstick), [pixy](https://www.pixy.co.id/product/series), [somethinc](https://somethinc.com/id/product/detail/multitask-water-gloss), [emina](https://www.eminacosmetics.com/best-product), [meybelline](https://www.maybelline.com/).
+The scraping process begins by collecting resource links for each product page from several beauty product brands in Indonesia and one beauty product brand from outside Indonesia. The brands scraped include [wardah](https://www.wardahbeauty.com/), [hanasui](https://hanasui.id/makeup/lipstick), [pixy](https://www.pixy.co.id/product/series), [somethinc](https://somethinc.com/id/product/detail/multitask-water-gloss), [emina](https://www.eminacosmetics.com/best-product), [meybelline](https://www.maybelline.com/).
 Then scraping is carried out using Python BeautifulSoup which can be seen at 
 
     Product_classifier/get_data 
@@ -113,8 +113,7 @@ Then scraping is carried out using Python BeautifulSoup which can be seen at
 ### Classify Season Name
 Based on the data obtained from scraping, further analysis is carried out by classifying products based on the two closest seasons and the distance becomes the percentage of the euclidian distance of the product. The ground truth used is taken from a color reference that has been classified into 12 seasons which become the centroid of the product color distribution. 
 
-
-Sebaran Warna Setiap Season 
+Color Distribution of Each Season plot by matplotlib
 ![Autumn Deep](https://github.com/foundie/ML/blob/main/Product_classifier/clasify_season/pict/Autumn%20Deep.png?raw=True)  
 ![Autumn Deep](https://github.com/foundie/ML/blob/main/Product_classifier/clasify_season/pict/Autumn%20Soft.png?raw=True)  
 ![Autumn Deep](https://github.com/foundie/ML/blob/main/Product_classifier/clasify_season/pict/Autumn%20Warm.png?raw=True)  
@@ -150,6 +149,18 @@ The centroid distribution of the color of each cluster product is as follows
 
 The result of the classification of these products is that when the user selects one product, ten other products will come out that are close to the product based on the parameters entered in K-means, namely color, type, shade, tone, and season features. 
 After processing using K-Means, the code is transposed into javascript to make it easier and faster to deploy on the server.
+
+## Library and Dependencies 
+1. Tensorflow and Tensorflow.js
+2. Torch
+3. Sklearn
+4. OpenCV
+5. Dlib
+6. Pandas
+7. Numpy
+8. BeautifulSoup
+9. Matplotlib
+10. Plotly 
 
 ## Feedback and Contribution
 This repository hosts the machine learning components developed for Foundie Application, as part of the Google Bangkit Academy Capstone Project. 
